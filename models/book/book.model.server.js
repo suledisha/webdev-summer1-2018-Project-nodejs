@@ -6,9 +6,13 @@ function createBook(user) {
     return bookModel.create(user);
 }
 
+function findAllBooks(){
+    return bookModel.find();
+}
 
 var api = {
     createBook: createBook,
+    findAllBooks: findAllBooks
 
 };
 
