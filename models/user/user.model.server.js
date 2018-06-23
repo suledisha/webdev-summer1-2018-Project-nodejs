@@ -26,7 +26,9 @@ function updateUser(user){
         username: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
-        email: user.email
+        email: user.email,
+        bio: user.bio,
+        snippet: user.snippet
     });
 }
 
