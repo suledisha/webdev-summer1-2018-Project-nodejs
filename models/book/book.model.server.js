@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var bookSchema = require('./book.schema.server');
 var bookModel = mongoose.model('bookModel', bookSchema);
 
-function createBook(user) {
-    return bookModel.create(user);
+function createBook(book) {
+    return bookModel.create(book)
 }
 
 function findAllBooks(){

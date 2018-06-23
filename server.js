@@ -41,5 +41,9 @@ app.use(session({
 
 var bookService = require('./services/book.service.server');
 bookService(app);
+var userService = require('./services/user.service.server');
+userService(app);
+var likeService = require('./services/like.service.server');
+likeService(app);
 
 app.listen(process.env.PORT || 4000)
