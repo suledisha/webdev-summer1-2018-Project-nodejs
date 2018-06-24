@@ -29,6 +29,7 @@ function updateUser(user){
         email: user.email,
         bio: user.bio,
         snippet: user.snippet
+
     });
 }
 

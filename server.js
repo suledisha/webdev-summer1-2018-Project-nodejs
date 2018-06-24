@@ -45,5 +45,7 @@ var userService = require('./services/user.service.server');
 userService(app);
 var likeService = require('./services/like.service.server');
 likeService(app);
+var authoredService = require('./services/authoredBook.service.server');
+authoredService(app);
 
 app.listen(process.env.PORT || 4000)
