@@ -49,5 +49,7 @@ var authoredService = require('./services/authoredBook.service.server');
 authoredService(app);
 var reviewService = require('./services/review.service.server');
 reviewService(app);
+var followService = require('./services/follow.service.server');
+followService(app);
 
 app.listen(process.env.PORT || 4000)
