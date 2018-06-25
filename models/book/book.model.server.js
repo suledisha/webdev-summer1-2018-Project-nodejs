@@ -10,9 +10,14 @@ function findAllBooks(){
     return bookModel.find();
 }
 
+function deleteBookById(book) {
+    return bookModel.deleteOne(book);
+}
+
 var api = {
     createBook: createBook,
-    findAllBooks: findAllBooks
+    findAllBooks: findAllBooks,
+    deleteBookById: deleteBookById
 
 };
 

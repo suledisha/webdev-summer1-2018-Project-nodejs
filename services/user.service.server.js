@@ -1,6 +1,7 @@
 module.exports = function (app) {
     app.get('/api/user', findAllUsers);
     app.get('/api/user/:userId', findUserById);
+    app.delete('/api/user/:userId', deleteUserById);
     app.post('/api/register', findUserByUsername)
     app.post('/api/user', createUser);
     app.get('/api/profile', profile);
@@ -11,6 +12,16 @@ module.exports = function (app) {
 
     var userModel = require('../models/user/user.model.server');
 
+    function deleteUserById(req,res){
+        var userId = req.params['userId'];
+        var user ={
+            _id: userId
+        }
+        userModel.deleteUserById(user)
+            .then(function (users) {
+                res.send(users);
+            })
+    }
     function login(req,res){
         var credentials = req.body;
         userModel.findUserByCredentials(credentials)

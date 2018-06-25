@@ -9,6 +9,9 @@ function userUnreviewBook(reviews) {
     return reviewModel.deleteOne(reviews);
 }
 
+function findAllReviews(){
+    return reviewModel.find();
+}
 function findReviewsForUser(userId) {
     return reviewModel
         .find({user: userId})
@@ -16,9 +19,14 @@ function findReviewsForUser(userId) {
         .exec();
 }
 
+function deleteReviewById(review) {
+    return reviewModel.deleteOne(review);
+}
 
 module.exports = {
     userReviewsBook:userReviewsBook,
     userUnreviewBook: userUnreviewBook,
-    findReviewsForUser:findReviewsForUser
+    findReviewsForUser:findReviewsForUser,
+    findAllReviews: findAllReviews,
+    deleteReviewById: deleteReviewById
 };

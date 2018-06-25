@@ -15,6 +15,10 @@ function createUser(user) {
     return userModel.create(user);
 }
 
+function deleteUserById(user) {
+    return userModel.deleteOne(user);
+}
+
 function findAllUsers() {
     return userModel.find();
 }
@@ -38,7 +42,8 @@ var api = {
     findAllUsers: findAllUsers,
     findUserById: findUserById,
     findUserByCredentials:findUserByCredentials,
-    updateUser : updateUser
+    updateUser : updateUser,
+    deleteUserById: deleteUserById
 };
 
 module.exports = api;
