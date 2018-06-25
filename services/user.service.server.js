@@ -1,5 +1,7 @@
 module.exports = function (app) {
     app.get('/api/user', findAllUsers);
+    app.get('/api/readers', findAllReaders);
+    app.get('/api/authors', findAllAuthors);
     app.get('/api/user/:userId', findUserById);
     app.delete('/api/user/:userId', deleteUserById);
     app.post('/api/register', findUserByUsername)
@@ -11,6 +13,21 @@ module.exports = function (app) {
     app.post('/api/login', login);
 
     var userModel = require('../models/user/user.model.server');
+
+    function findAllReaders(req,res){
+        userModel.findAllReaders()
+            .then(function (users) {
+                res.send(users);
+            })
+    }
+
+    function findAllAuthors(req,res){
+        userModel.findAllAuthors()
+            .then(function (users) {
+                res.send(users);
+            })
+    }
+
 
     function deleteUserById(req,res){
         var userId = req.params['userId'];

@@ -23,6 +23,14 @@ function findAllUsers() {
     return userModel.find();
 }
 
+function findAllAuthors(){
+    return userModel.find({role : 'author'});
+}
+
+function findAllReaders(){
+    return userModel.find({role : 'reader'});
+}
+
 function updateUser(user){
     return userModel.update({
         _id: user._id
@@ -43,7 +51,9 @@ var api = {
     findUserById: findUserById,
     findUserByCredentials:findUserByCredentials,
     updateUser : updateUser,
-    deleteUserById: deleteUserById
+    deleteUserById: deleteUserById,
+    findAllReaders: findAllReaders,
+    findAllAuthors: findAllAuthors
 };
 
 module.exports = api;
