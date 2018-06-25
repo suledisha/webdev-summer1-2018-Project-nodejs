@@ -51,5 +51,7 @@ var reviewService = require('./services/review.service.server');
 reviewService(app);
 var followService = require('./services/follow.service.server');
 followService(app);
+var adminuserService = require('./services/admin-user.service.server');
+adminuserService(app);
 
 app.listen(process.env.PORT || 4000)
