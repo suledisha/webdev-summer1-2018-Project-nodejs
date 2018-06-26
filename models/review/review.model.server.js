@@ -19,6 +19,10 @@ function findReviewsForUser(userId) {
         .exec();
 }
 
+function deleteAllWithQuery(query) {
+    return reviewModel.deleteMany(query);
+}
+
 function findReviewsForBook(bookId) {
     return reviewModel
         .find({book: bookId})
@@ -35,5 +39,6 @@ module.exports = {
     findReviewsForUser:findReviewsForUser,
     findAllReviews: findAllReviews,
     deleteReviewById: deleteReviewById,
-    findReviewsForBook: findReviewsForBook
+    findReviewsForBook: findReviewsForBook,
+    deleteAllWithQuery: deleteAllWithQuery
 };

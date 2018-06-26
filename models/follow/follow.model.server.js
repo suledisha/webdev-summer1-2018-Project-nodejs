@@ -10,6 +10,11 @@ function userUnfollowsUser(follow) {
     return followModel.deleteOne(follow);
 }
 
+function deleteAllWithQuery(query) {
+    return followModel.deleteMany(query);
+}
+
+
 function findFollowingForUser(userId) {
     return followModel
         .find({follower: userId})
@@ -21,5 +26,6 @@ function findFollowingForUser(userId) {
 module.exports = {
     userFollowsUser:userFollowsUser,
     userUnfollowsUser: userUnfollowsUser,
-    findFollowingForUser:findFollowingForUser
+    findFollowingForUser:findFollowingForUser,
+    deleteAllWithQuery: deleteAllWithQuery
 };

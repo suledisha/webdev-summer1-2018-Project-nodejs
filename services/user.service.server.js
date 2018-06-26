@@ -13,6 +13,9 @@ module.exports = function (app) {
     app.post('/api/login', login);
 
     var userModel = require('../models/user/user.model.server');
+    var likeModel = require('../models/like/like.model.server');
+    var reviewModel = require('../models/review/review.model.server');
+    var followModel = require('../models/follow/follow.model.server');
 
     function findAllReaders(req,res){
         userModel.findAllReaders()
@@ -34,9 +37,30 @@ module.exports = function (app) {
         var user ={
             _id: userId
         }
+        var query= {
+            user : userId
+        }
+        var follower ={
+            follower: userId
+        }
+        var following ={
+            following: userId
+        }
+        likeModel.deleteAllWithQuery(query)
+            .then(function (err) {
+        });
+        reviewModel.deleteAllWithQuery(query)
+            .then(function (err) {
+            });
+        followModel.deleteAllWithQuery(follower)
+            .then(function (err) {
+            });
+        followModel.deleteAllWithQuery(following)
+            .then(function (err) {
+            });
         userModel.deleteUserById(user)
             .then(function (users) {
-                res.send(users);
+                res.send(users)
             })
     }
     function login(req,res){

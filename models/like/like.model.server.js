@@ -9,6 +9,9 @@ function userLikesBook(likes) {
 function userUnlikesBook(unlikes) {
     return likeModel.deleteOne(unlikes);
 }
+function deleteAllWithQuery(query) {
+    return likeModel.deleteMany(query);
+}
 
 function findLikedBooksForUser(userId) {
     return likeModel
@@ -25,5 +28,6 @@ module.exports = {
     userLikesBook:userLikesBook,
     userUnlikesBook: userUnlikesBook,
     findLikedBooksForUser:findLikedBooksForUser,
-    findLikesForBooks: findLikesForBooks
+    findLikesForBooks: findLikesForBooks,
+    deleteAllWithQuery: deleteAllWithQuery
 };
