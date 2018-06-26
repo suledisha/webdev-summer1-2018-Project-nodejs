@@ -1,6 +1,7 @@
 module.exports = function (app) {
     app.post('/api/book', createBook);
     app.get('/api/book', findAllBooks);
+    app.post('/api/book/id', findBookByCredentials);
     app.delete('/api/book/:bookId/delete', deleteBookById);
     var bookModel = require('../models/book/book.model.server');
 
@@ -27,6 +28,21 @@ module.exports = function (app) {
         bookModel.deleteBookById(book)
             .then(function (books) {
                 res.send(books);
+            })
+    }
+
+    function findBookByCredentials(req,res){
+        var credentials = req.body;
+        bookModel.findBookByCredentials(credentials)
+            .then(function (book){
+                if(book==null){
+                    res.json({
+                        _id: -1
+                    })
+                }
+                else {
+                    res.json(book);
+                }
             })
     }
 

@@ -13,11 +13,15 @@ function findAllBooks(){
 function deleteBookById(book) {
     return bookModel.deleteOne(book);
 }
+function findBookByCredentials(credentials) {
+    return bookModel.findOne(credentials);
+}
 
 var api = {
     createBook: createBook,
     findAllBooks: findAllBooks,
-    deleteBookById: deleteBookById
+    deleteBookById: deleteBookById,
+    findBookByCredentials: findBookByCredentials
 
 };
 
