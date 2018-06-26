@@ -2,6 +2,7 @@ module.exports = function (app) {
 
     app.get('/api/book/reviews', findReviewedBooksForUser);
     app.post('/api/book/:bookId/reviews', userReviewsBook);
+    app.get('/api/book/:bookId/reviews', findReviewsForBook);
     app.delete('/api/book/:bookId/unreviews', userUnReviewsBook);
     app.delete('/api/review/:reviewId/delete', deleteReviewById);
     app.get('/api/allreviews', findAllReviews)
@@ -19,6 +20,15 @@ module.exports = function (app) {
             .then(function (reviews) {
                 res.send(reviews);
             })
+    }
+
+    function findReviewsForBook(req, res) {
+        var bookId =req.params.bookId;
+        reviewModel.findReviewsForBook(bookId)
+            .then(function(reviews) {
+                res.json(reviews);
+            });
+
     }
 
     function findAllReviews(req,res){

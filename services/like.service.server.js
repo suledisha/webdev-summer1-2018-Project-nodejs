@@ -2,6 +2,7 @@ module.exports = function (app) {
 
     app.get('/api/book/likes', findLikedBooksForUser);
     app.post('/api/book/:bookId/likes', userLikesBook);
+    app.get('/api/book/:bookId/likes', findLikesForBooks );
     app.delete('/api/book/:bookId/unlikes', userUnlikesBook);
     app.get('/api/user/:userId/liked', findLikedBooksUserById);
 
@@ -53,6 +54,14 @@ module.exports = function (app) {
         likeModel.userUnlikesBook(likes)
             .then(function (likes) {
                 res.json(likes);
+            })
+    }
+    
+    function findLikesForBooks(req, res) {
+        var bookId = req.params.bookId;
+        likeModel.findLikesForBooks(bookId)
+            .then(function (count) {
+                res.json({"count": count})
             })
     }
 

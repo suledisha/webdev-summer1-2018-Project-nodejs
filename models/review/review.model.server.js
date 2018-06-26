@@ -19,6 +19,12 @@ function findReviewsForUser(userId) {
         .exec();
 }
 
+function findReviewsForBook(bookId) {
+    return reviewModel
+        .find({book: bookId})
+        .populate('user')
+        .exec();
+}
 function deleteReviewById(review) {
     return reviewModel.deleteOne(review);
 }
@@ -28,5 +34,6 @@ module.exports = {
     userUnreviewBook: userUnreviewBook,
     findReviewsForUser:findReviewsForUser,
     findAllReviews: findAllReviews,
-    deleteReviewById: deleteReviewById
+    deleteReviewById: deleteReviewById,
+    findReviewsForBook: findReviewsForBook
 };

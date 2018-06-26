@@ -16,10 +16,14 @@ function findLikedBooksForUser(userId) {
         .populate('book')
         .exec();
 }
-
+function findLikesForBooks(bookId) {
+    return likeModel
+        .find({book: bookId}).count()
+}
 
 module.exports = {
     userLikesBook:userLikesBook,
     userUnlikesBook: userUnlikesBook,
-    findLikedBooksForUser:findLikedBooksForUser
+    findLikedBooksForUser:findLikedBooksForUser,
+    findLikesForBooks: findLikesForBooks
 };
