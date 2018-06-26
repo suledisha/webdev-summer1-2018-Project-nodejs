@@ -22,10 +22,18 @@ function findFollowingForUser(userId) {
         .exec();
 }
 
+function findFollowedByForUser(userId) {
+    return followModel
+        .find({following: userId})
+        .populate('follower')
+        .exec();
+}
+
 
 module.exports = {
     userFollowsUser:userFollowsUser,
     userUnfollowsUser: userUnfollowsUser,
     findFollowingForUser:findFollowingForUser,
-    deleteAllWithQuery: deleteAllWithQuery
+    deleteAllWithQuery: deleteAllWithQuery,
+    findFollowedByForUser: findFollowedByForUser
 };

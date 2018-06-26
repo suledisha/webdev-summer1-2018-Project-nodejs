@@ -16,9 +16,13 @@ function findAuthoredBooksForUser(userId) {
         .populate('book')
         .exec();
 }
+function deleteAllWithQuery(query) {
+    return authoredBookModel.deleteMany(query);
+}
 
 module.exports = {
     addAuthoredBook:addAuthoredBook,
     deleteAuthoredBook:deleteAuthoredBook,
-    findAuthoredBooksForUser: findAuthoredBooksForUser
+    findAuthoredBooksForUser: findAuthoredBooksForUser,
+    deleteAllWithQuery: deleteAllWithQuery
 };

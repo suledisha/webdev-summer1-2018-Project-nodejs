@@ -7,6 +7,7 @@ module.exports = function (app) {
     var bookModel = require('../models/book/book.model.server');
     var likeModel = require('../models/like/like.model.server');
     var reviewModel = require('../models/review/review.model.server');
+    var authoredBookModel = require('../models/authoredBook/authoredBook.model.server');
 
 
     function createBook(req, res) {
@@ -36,6 +37,9 @@ module.exports = function (app) {
             .then(function (err) {
             });
         reviewModel.deleteAllWithQuery(query)
+            .then(function (err) {
+            });
+        authoredBookModel.deleteAllWithQuery(query)
             .then(function (err) {
             });
         bookModel.deleteBookById(book)

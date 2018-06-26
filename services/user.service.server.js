@@ -16,6 +16,7 @@ module.exports = function (app) {
     var likeModel = require('../models/like/like.model.server');
     var reviewModel = require('../models/review/review.model.server');
     var followModel = require('../models/follow/follow.model.server');
+    var authoredBookModel = require('../models/authoredBook/authoredBook.model.server');
 
     function findAllReaders(req,res){
         userModel.findAllReaders()
@@ -56,6 +57,9 @@ module.exports = function (app) {
             .then(function (err) {
             });
         followModel.deleteAllWithQuery(following)
+            .then(function (err) {
+            });
+        authoredBookModel.deleteAllWithQuery(query)
             .then(function (err) {
             });
         userModel.deleteUserById(user)
