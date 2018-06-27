@@ -53,5 +53,6 @@ var followService = require('./services/follow.service.server');
 followService(app);
 var adminuserService = require('./services/admin-user.service.server');
 adminuserService(app);
-
+var shelfService = require('./services/shelf.service.server');
+shelfService(app);
 app.listen(process.env.PORT || 4000)

@@ -8,6 +8,8 @@ module.exports = function (app) {
     var likeModel = require('../models/like/like.model.server');
     var reviewModel = require('../models/review/review.model.server');
     var authoredBookModel = require('../models/authoredBook/authoredBook.model.server');
+    var shelfModel = require('../models/shelf/shelf.model.server');
+
 
 
     function createBook(req, res) {
@@ -42,6 +44,9 @@ module.exports = function (app) {
         authoredBookModel.deleteAllWithQuery(query)
             .then(function (err) {
             });
+        shelfModel.deleteAllWithQuery(query)
+            .then(function (err) {
+            });
         bookModel.deleteBookById(book)
             .then(function (books) {
                 res.send(books);
@@ -54,7 +59,7 @@ module.exports = function (app) {
             .then(function (book){
                 if(book==null){
                     res.json({
-                        _id: -1
+                        _id: '-1'
                     })
                 }
                 else {
