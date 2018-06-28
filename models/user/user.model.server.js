@@ -40,6 +40,7 @@ function updateUser(user){
         lastName: user.lastName,
         email: user.email,
         bio: user.bio,
+        role: user.role,
         snippet: user.snippet
 
     });
